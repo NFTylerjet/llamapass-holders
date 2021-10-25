@@ -26,7 +26,7 @@ function getType(tokenId) {
 }
 
 (async () => {
-  const browser = await puppeteer.launch({headless: false});
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const tId = [];
   const owner = [];
