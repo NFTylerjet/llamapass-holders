@@ -27,10 +27,8 @@ function modifiedDate() {
   }
 }
 
-cron.schedule('3 * * * *', () => {
+cron.schedule('45 * * * *', () => {
   modifiedDate();
-  console.log('Running puppet.js')
-  require('child_process').fork('./puppet');
 })
 
 app.get('/', (req, res) => {
