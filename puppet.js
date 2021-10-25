@@ -7,7 +7,6 @@ const cheerio = require('cheerio');
 const ObjectsToCsv = require('objects-to-csv');
 const cliProgress = require('cli-progress');
 const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
-const express = require('express');
 
 function getType(tokenId) {
   let type;
