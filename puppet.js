@@ -7,6 +7,7 @@ const cheerio = require('cheerio');
 const ObjectsToCsv = require('objects-to-csv');
 const cliProgress = require('cli-progress');
 const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
+const path = require('path');
 
 function getType(tokenId) {
   let type;
@@ -74,9 +75,9 @@ function getType(tokenId) {
     addresses.push({ token_id: tId[i], owner: owner[i], amount: amount[i] });
   }
 
-  const combinedPassHolder = 'docs/csv/CombinedPassHolders.csv';
-  const goldPassHolder = 'docs/csv/GoldPassHolders.csv';
-  const silverPassHolder = 'docs/csv/SilverPassHolders.csv';
+  const combinedPassHolder = path.join(process.cwd, 'docs/csv/CombinedPassHolders.csv');
+  const goldPassHolder = path.join(process.cwd, 'docs/csv/GoldPassHolders.csv');
+  const silverPassHolder = path.join(process.cwd, 'docs/csv/SilverPassHolders.csv');
 
   let passType;
   const seen = {};
