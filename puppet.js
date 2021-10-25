@@ -7,8 +7,7 @@ const cheerio = require('cheerio');
 const ObjectsToCsv = require('objects-to-csv');
 const cliProgress = require('cli-progress');
 const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
-const path = require('path');
-const fs = require('fs');
+const express = require('express');
 
 function getType(tokenId) {
   let type;
@@ -76,9 +75,9 @@ function getType(tokenId) {
     addresses.push({ token_id: tId[i], owner: owner[i], amount: amount[i] });
   }
 
-  const combinedPassHolder = path.join(__dirname, 'docs/csv/CombinedPassHolders.csv');
-  const goldPassHolder = path.join(__dirname, 'docs/csv/GoldPassHolders.csv');
-  const silverPassHolder = path.join(__dirname, 'docs/csv/SilverPassHolders.csv');
+  const combinedPassHolder = './csv/CombinedPassHolders.csv';
+  const goldPassHolder = './csv/GoldPassHolders.csv';
+  const silverPassHolder = './csv/SilverPassHolders.csv';
 
   let passType;
   const seen = {};
@@ -113,9 +112,6 @@ function getType(tokenId) {
     'Amounts should be 1 less than etherscans amount since llamas address is removed from the list!',
   );
   new ObjectsToCsv([...cPass]).toDisk(combinedPassHolder);
-  const testFile = path.join(__dirname, 'docs/csv/test.txt');
-  fs.writeFile(testFile,'testData', (err) => {
-    if (err) {console.log(err);}
-  });
+
   await browser.close();
 })();
