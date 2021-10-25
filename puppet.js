@@ -8,6 +8,7 @@ const ObjectsToCsv = require('objects-to-csv');
 const cliProgress = require('cli-progress');
 const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 const path = require('path');
+const fs = require('fs');
 
 function getType(tokenId) {
   let type;
@@ -112,5 +113,9 @@ function getType(tokenId) {
     'Amounts should be 1 less than etherscans amount since llamas address is removed from the list!',
   );
   new ObjectsToCsv([...cPass]).toDisk(combinedPassHolder);
+  const testFile = path.join(__dirname, 'docs/csv/test.txt');
+  fs.writeFile(testFile,'testData', (err) => {
+    if (err) {console.log(err);}
+  });
   await browser.close();
 })();
