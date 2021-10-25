@@ -11,7 +11,10 @@ const port = 3000;
 const date = require('date-and-time')
 const ordinal = require('date-and-time/plugin/ordinal');
 date.plugin(ordinal);
-const fs = require('fs')
+const cron = require('node-cron');
+const pm2 = require('pm2');
+const fs = require('fs');
+
 const getFileUpdatedDate = (path) => {
   const stats = fs.statSync(path)
   return stats.mtime
@@ -23,6 +26,12 @@ function modifiedDate() {
     console.log(error.message);
   }
 }
+
+cron.schedule('3 * * * *', () => {
+  modifiedDate();
+  console.log('Running puppet.js')
+  require('child_process').fork('./puppet');
+})
 
 app.get('/', (req, res) => {
   modifiedDate();
