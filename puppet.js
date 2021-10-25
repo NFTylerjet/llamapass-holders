@@ -74,9 +74,9 @@ function getType(tokenId) {
     addresses.push({ token_id: tId[i], owner: owner[i], amount: amount[i] });
   }
 
-  const combinedPassHolder = './docs/csv/CombinedPassHolders.csv';
-  const goldPassHolder = './docs/csv/GoldPassHolders.csv';
-  const silverPassHolder = './docs/csv/SilverPassHolders.csv';
+  const combinedPassHolder = 'docs/csv/CombinedPassHolders.csv';
+  const goldPassHolder = 'docs/csv/GoldPassHolders.csv';
+  const silverPassHolder = 'docs/csv/SilverPassHolders.csv';
 
   let passType;
   const seen = {};
