@@ -7,7 +7,7 @@ let lastupated;
 
 app.set('view options', {lastupdated: lastupated});
 const path = require('path');
-const port = 3000;
+const port = 5200;
 const date = require('date-and-time')
 const ordinal = require('date-and-time/plugin/ordinal');
 date.plugin(ordinal);
