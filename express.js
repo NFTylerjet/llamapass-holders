@@ -12,7 +12,6 @@ const date = require('date-and-time')
 const ordinal = require('date-and-time/plugin/ordinal');
 date.plugin(ordinal);
 const cron = require('node-cron');
-const pm2 = require('pm2');
 const fs = require('fs');
 
 const getFileUpdatedDate = (path) => {
