@@ -20,7 +20,7 @@ const getFileUpdatedDate = (path) => {
 }
 function modifiedDate() {
   try {
-    lastupdated = date.format(getFileUpdatedDate('./public/files/CombinedPassHolders.csv'),'MMM DDD YYYY hh:mm:ss');
+    lastupdated = date.format(getFileUpdatedDate('./public/files/CombinedPassHolders.csv'),'MMM DDD YYYY hh:mm:ss A', true);
   } catch (error) {
     console.log(error.message);
   }
